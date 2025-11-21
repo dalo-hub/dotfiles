@@ -25,13 +25,13 @@ This repository contains my personal setup and system configurations, focused on
 ```
 dotfiles/
 ├── README.md              # This file
-├── config/
-│   └── hypr/
-│       └── hyprland.conf  # Hyprland configuration
-├── kitty/
-│   └── kitty.conf         # Kitty terminal emulator configuration
-└── starship/
-    └── starship.toml      # Starship prompt configuration
+└── config/
+    ├── hypr/
+    │   └── hyprland.conf  # Hyprland configuration
+    ├── kitty/
+    │   └── kitty.conf     # Kitty terminal emulator configuration
+    └── starship/
+        └── starship.toml  # Starship prompt configuration
 ```
 
 ## 🚀 Installation
@@ -60,10 +60,10 @@ mkdir -p ~/.config/starship
 cp config/hypr/hyprland.conf ~/.config/hypr/
 
 # Copy Kitty configuration
-cp kitty/kitty.conf ~/.config/kitty/
+cp config/kitty/kitty.conf ~/.config/kitty/
 
 # Copy Starship configuration
-cp starship/starship.toml ~/.config/starship/
+cp config/starship/starship.toml ~/.config/starship/
 ```
 
 ### Manual Linking (Optional)
@@ -72,8 +72,8 @@ For easier updates, create symbolic links instead of copying:
 
 ```bash
 ln -sf ~/.dotfiles/config/hypr/hyprland.conf ~/.config/hypr/
-ln -sf ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/
-ln -sf ~/.dotfiles/starship/starship.toml ~/.config/starship/
+ln -sf ~/.dotfiles/config/kitty/kitty.conf ~/.config/kitty/
+ln -sf ~/.dotfiles/config/starship/starship.toml ~/.config/starship/
 ```
 
 This way, changes in the dotfiles repository automatically reflect in your config.
@@ -98,7 +98,7 @@ A dynamic tiling window manager with:
 - `SUPER + Enter` - Launch terminal (Kitty)
 - `SUPER + Alt + Q` - Close window
 
-### Kitty (`kitty/kitty.conf`)
+### Kitty (`config/kitty/kitty.conf`)
 
 A GPU-accelerated terminal emulator featuring:
 
@@ -110,7 +110,7 @@ A GPU-accelerated terminal emulator featuring:
 
 ## 🎯 Shell & Prompt
 
-### Starship (`starship/starship.toml`)
+### Starship (`config/starship/starship.toml`)
 
 A cross-platform, minimal prompt built in Rust featuring:
 
