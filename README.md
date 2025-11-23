@@ -26,6 +26,8 @@ This repository contains my personal setup and system configurations, focused on
 dotfiles/
 ├── README.md              # This file
 └── config/
+    ├── fastfetch/
+    │   └── config.jsonc   # Fastfetch system info configuration
     ├── hypr/
     │   └── hyprland.conf  # Hyprland configuration
     ├── kitty/
@@ -48,6 +50,7 @@ cd ~/.dotfiles
 2. Create necessary directories:
 
 ```bash
+mkdir -p ~/.config/fastfetch
 mkdir -p ~/.config/hypr
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/starship
@@ -56,6 +59,9 @@ mkdir -p ~/.config/starship
 3. Sync configuration files:
 
 ```bash
+# Copy Fastfetch configuration
+cp config/fastfetch/config.jsonc ~/.config/fastfetch/
+
 # Copy Hyprland configuration
 cp config/hypr/hyprland.conf ~/.config/hypr/
 
@@ -71,14 +77,46 @@ cp config/starship/starship.toml ~/.config/starship/
 For easier updates, create symbolic links instead of copying:
 
 ```bash
+ln -sf ~/.dotfiles/config/fastfetch/config.jsonc ~/.config/fastfetch/
 ln -sf ~/.dotfiles/config/hypr/hyprland.conf ~/.config/hypr/
 ln -sf ~/.dotfiles/config/kitty/kitty.conf ~/.config/kitty/
 ln -sf ~/.dotfiles/config/starship/starship.toml ~/.config/starship/
 ```
 
 This way, changes in the dotfiles repository automatically reflect in your config.
+This repository intentionally does not provide an automated install script.
+
+Configuration files live under `config/` — use the copy commands or the symbolic link examples above to install them to `~/.config`.
+
+Recommendation: prefer creating symbolic links (as shown in the "Manual Linking" section) so updates to this repository automatically propagate to your active configuration.
 
 ## 🔧 Included Configurations
+
+### Fastfetch (`config/fastfetch/config.jsonc`)
+
+A minimalist system information display tool featuring:
+
+- **Custom Rayquaza logo** - Displays Pokémon art as system header
+- **System monitoring** - Shows user, hostname, uptime, OS, kernel, desktop environment
+- **Hardware details** - CPU (with P/E core count), disk usage, and memory information
+- **Network information** - Displays local IP address and network interface
+- **Shell detection** - Shows currently active shell and terminal
+- **Color scheme** - Matches the Andromeda color palette for aesthetic consistency
+- **Color indicators** - Terminal color palette visualization at bottom
+
+**Key modules displayed:**
+
+- User and hostname
+- System uptime
+- Distribution info
+- Kernel version
+- Desktop environment (Hyprland)
+- Terminal emulator (Kitty)
+- Active shell
+- CPU and disk statistics
+- Memory usage
+- Local IP address and network interface
+- Terminal colors
 
 ### Hyprland (`config/hypr/hyprland.conf`)
 
@@ -102,11 +140,18 @@ A dynamic tiling window manager with:
 
 A GPU-accelerated terminal emulator featuring:
 
-- **Custom color scheme** - Optimized for readability and aesthetics
+- **Custom color scheme** - Andromeda-inspired palette optimized for readability
 - **Performance optimized** - Faster than traditional terminal emulators
-- **Font configuration** - Nerd Font support for icons and symbols
-- **Productive shortcuts** - Quick actions and window management
+- **Font configuration** - JetBrainsMono Nerd Font for icons and symbols
+- **Productive shortcuts** - Quick actions for font resizing
 - **True color support** - Full RGB color capabilities
+- **Beam cursor** - Modern cursor style with shell integration disabled
+
+**Color Scheme:**
+
+- Primary background: `#23262E`
+- Primary foreground: `#D5CED9`
+- Accent colors: Cyan (`#00e8c6`), Yellow (`#FFE66D`), Red (`#ee5d43`), Green (`#96E072`)
 
 ## 🎯 Shell & Prompt
 
@@ -115,11 +160,23 @@ A GPU-accelerated terminal emulator featuring:
 A cross-platform, minimal prompt built in Rust featuring:
 
 - **Fast and lightweight** - Written in Rust for optimal performance
-- **Language indicators** - Shows active programming languages and versions
-- **Git integration** - Real-time repository status and branch information
-- **Custom modules** - Directory, command duration, exit status, and more
-- **Starry theme** - Beautiful and minimalist visual design
-- **Environment awareness** - Displays active virtual environments (Python, Node.js, etc.)
+- **Language indicators** - Shows active programming languages (Python, Node.js, C, C++, Rust, Go, PHP, Java, Kotlin, Haskell)
+- **Git integration** - Real-time repository status, branch information, and change indicators
+- **Custom modules** - Directory with truncation, command duration, exit status, and time display
+- **Andromeda theme** - Color palette matching the system's aesthetic
+- **Environment awareness** - Displays Docker context, Conda, and Pixi environments
+- **Dynamic format** - Organized prompt segments with smooth color transitions
+
+**Module Stack:**
+
+- OS indicator (with custom symbols for each distribution)
+- Username and authentication status
+- Current directory (with custom folder icons)
+- Git branch and status
+- Programming language versions
+- Docker context
+- Time display with HH:MM format
+- Visual prompt character with status indication
 
 **Installation:**
 
@@ -131,6 +188,23 @@ curl -sS https://starship.rs/install.sh | sh
 eval "$(starship init bash)"  # For Bash
 eval "$(starship init zsh)"   # For Zsh
 ```
+
+## 🎨 Color Palette
+
+All configurations use the **Andromeda color palette** for visual consistency:
+
+| Color        | Hex       | Usage                        |
+| ------------ | --------- | ---------------------------- |
+| Background   | `#23262E` | Primary background           |
+| Foreground   | `#D5CED9` | Primary text                 |
+| Yellow/Gold  | `#FFE66D` | Accents, highlights          |
+| Red          | `#ee5d43` | Errors, active borders       |
+| Cyan/Teal    | `#00e8c6` | Secondary accents            |
+| Green        | `#96E072` | Success, positive indicators |
+| Purple       | `#ff00aa` | Additional accent            |
+| Blue         | `#7cb7ff` | Secondary highlight          |
+| Neutral Gray | `#746F77` | Inactive/muted elements      |
+| Surface      | `#3D4352` | UI surface color             |
 
 ## 📝 Status
 
