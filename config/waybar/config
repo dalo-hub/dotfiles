@@ -1,0 +1,81 @@
+{
+  "position": "top",
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": [
+    "cpu",
+    "memory",
+    "disk"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "cpu": {
+    "interval": 1,
+    "format": "{usage}% <span color='#ee5d43'> </span>"
+  },
+  "memory": {
+    "interval": 1,
+    "format": "{used:0.1f}G <span color='#ee5d43'> </span>"
+  },
+  "disk": {
+    "interval": 1,
+    "format": "{free} <span color='#ee5d43'> </span>",
+    "unit": "GB"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "󰐝"
+    },
+    "persistent-workspaces": {
+      "*": 6
+    }
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 5
+  },
+  "pulseaudio": {
+    "format": "{volume}% <span color='#ee5d43'>{icon}</span>",
+    "format-muted": " ",
+    "format-icons": {
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "battery": {
+    "interval": 60,
+    "full-at": 90,
+    "format": "{capacity}% <span color='#ee5d43'>{icon}</span>",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
+    "max-length": 25
+  },
+  "clock": {
+    "interval": 60,
+    "format": "{:%H:%M}",
+    "format-alt": "{:%H:%M | %a %d %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  }
+}
